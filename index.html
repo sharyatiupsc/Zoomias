@@ -1,90 +1,574 @@
+```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <title>Zoom IAS by Sharyati & Geeta | UPSC GS & Economics</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Zoom IAS - Concept driven UPSC GS & Economics by Sharyati Prakash Srivastava">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoom IAS - Free Study Notes</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        body {
+            background-color: #f8f9fc;
+            color: #333;
+            line-height: 1.6;
+        }
+        /* color theme */
+        :root {
+            --primary-blue: #1e3c72;
+            --secondary-blue: #2a5298;
+            --light-bg: #f0f4fa;
+            --white: #ffffff;
+            --gray: #6c757d;
+            --border: #e0e0e0;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px 0;
+        }
+        .btn {
+            display: inline-block;
+            background: var(--primary-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .btn:hover {
+            background: var(--secondary-blue);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+        }
+        .btn-outline:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+        /* header */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+        }
+        .logo p {
+            font-size: 0.8rem;
+            color: var(--gray);
+            letter-spacing: 1px;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        nav ul li a {
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        nav ul li a:hover {
+            background: var(--light-bg);
+            color: var(--primary-blue);
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        /* hero */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .hero .btn {
+            background: white;
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+        .hero .btn:hover {
+            background: var(--light-bg);
+        }
+        /* about section */
+        .about {
+            background: var(--white);
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .about h3 {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+        .about p {
+            max-width: 800px;
+            margin: auto;
+            font-size: 1.1rem;
+        }
+        /* features */
+        .features {
+            background: var(--light-bg);
+            padding: 50px 20px;
+        }
+        .features .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        .feature-item i {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+        .feature-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        /* notes section */
+        .notes {
+            padding: 60px 20px;
+            background: var(--white);
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 40px;
+        }
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+        .note-category {
+            background: var(--light-bg);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .note-category h3 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .note-list {
+            list-style: none;
+        }
+        .note-list li {
+            margin: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .note-list li span {
+            font-weight: 500;
+        }
+        .download-btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        .download-btn:hover {
+            background: var(--secondary-blue);
+        }
+        /* test series */
+        .test-series {
+            background: var(--light-bg);
+            padding: 60px 20px;
+        }
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .test-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+        }
+        .test-card h4 {
+            font-size: 1.4rem;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+        .test-card p {
+            margin-bottom: 20px;
+        }
+        .test-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .test-links a {
+            background: var(--primary-blue);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        /* announcement */
+        .announcement {
+            background: var(--white);
+            padding: 60px 20px;
+        }
+        .announcement-list {
+            max-width: 800px;
+            margin: auto;
+        }
+        .announce-item {
+            background: var(--light-bg);
+            margin-bottom: 15px;
+            padding: 15px 20px;
+            border-left: 5px solid var(--primary-blue);
+            border-radius: 0 8px 8px 0;
+        }
+        .announce-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--primary-blue);
+        }
+        .announce-date {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        /* video section */
+        .videos {
+            background: var(--light-bg);
+            padding: 60px 20px;
+        }
+        .video-placeholder {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        .video-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .video-thumb {
+            background: #ddd;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+        }
+        .video-card h4 {
+            padding: 15px 10px 5px;
+        }
+        .video-card p {
+            padding: 0 10px 15px;
+        }
+        /* contact */
+        .contact {
+            background: var(--white);
+            padding: 60px 20px;
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            font-size: 1.2rem;
+        }
+        .contact-info i {
+            color: var(--primary-blue);
+            width: 30px;
+        }
+        .contact-info div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        /* login (optional) */
+        .login {
+            background: var(--light-bg);
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .login-box {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .login-box h3 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+        .login-box input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+        }
+        .login-box .btn {
+            width: 100%;
+        }
+        /* footer */
+        footer {
+            background: var(--primary-blue);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: #ffd966;
+        }
+        /* responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Zoom IAS</h1>
+                <p>Your Gateway to Success in Competitive Exams</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">होम</a></li>
+                    <li><a href="#notes">नोट्स</a></li>
+                    <li><a href="#test-series">टेस्ट सीरीज</a></li>
+                    <li><a href="#announcement">अपडेट</a></li>
+                    <li><a href="#videos">वीडियो</a></li>
+                    <li><a href="#contact">संपर्क</a></li>
+                    <li><a href="#login">लॉगिन</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
 
-<header class="navbar">
-  <h1>Zoom IAS</h1>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#courses">Courses</a>
-    <a href="#faculty">Faculty</a>
-    <a href="#resources">Free Notes</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+    <main>
+        <!-- Home Section (Hero + About + Features) -->
+        <section id="home">
+            <div class="hero">
+                <h2>Download Free High-Quality Notes for UPSC, UPPCS & Economics</h2>
+                <p>Exam-Oriented Content | Structured PDFs | हर महीने करेंट अफेयर्स</p>
+                <div class="hero-buttons">
+                    <a href="#notes" class="btn"><i class="fas fa-download"></i> Download Notes</a>
+                    <a href="#" class="btn btn-outline"><i class="fab fa-telegram"></i> Join Telegram</a>
+                </div>
+            </div>
 
-<section class="hero">
-  <h2 class="animate">Concept-Driven GS & Economics for UPSC</h2>
-  <p>No hype. No fake success stories. Only exam-oriented content.</p>
-  <div class="buttons">
-    <a href="#resources">Free Notes</a>
-    <a href="#courses">Courses</a>
-    <a href="https://youtube.com" target="_blank">YouTube</a>
-  </div>
-</section>
+            <div class="about">
+                <div class="container">
+                    <h3>हमारे बारे में</h3>
+                    <p>Zoom IAS provides high-quality notes for Economics, GS, and Current Affairs specially designed for competitive exams. हमारी टीम एक्सपर्ट्स द्वारा तैयार किए गए नोट्स आपकी तैयारी को नई दिशा देते हैं।</p>
+                </div>
+            </div>
 
-<section id="about" class="section fade">
-  <h2>About Zoom IAS</h2>
-  <p>
-    Zoom IAS is a content-focused UPSC learning platform built for serious aspirants.
-    The emphasis is on conceptual clarity, PYQ orientation and structured preparation.
-  </p>
-</section>
+            <div class="features">
+                <div class="container">
+                    <div class="feature-item">
+                        <i class="fas fa-sync-alt"></i>
+                        <h4>Updated Notes</h4>
+                        <p>नवीनतम पाठ्यक्रम और परीक्षा पैटर्न के अनुसार</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-bullseye"></i>
+                        <h4>Exam-Oriented</h4>
+                        <p>हर टॉपिक को परीक्षा की दृष्टि से कवर किया गया</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-gift"></i>
+                        <h4>Free Access</h4>
+                        <p>बिल्कुल मुफ्त, बिना किसी शर्त के</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-file-pdf"></i>
+                        <h4>Structured PDFs</h4>
+                        <p>आसान पढ़ाई के लिए अध्यायवार PDF</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<section id="faculty" class="section fade">
-  <h2>Faculty</h2>
-  <div class="card">
-    <h3>Sharyati Prakash Srivastava</h3>
-    <p>Founder & Faculty (All Subjects)</p>
-    <ul>
-      <li>GS Paper I – Geeta Nagarkoti Srivastava</li>
-      <li>GS Paper II – Sharyati Prakash Srivastava</li>
-      <li>GS Paper III – Sharyati Prakash Srivastava</li>
-      <li>GS Paper IV – Geeta Nagarkoti Srivastava</li>
-      <li>Economics (GS + Optional) – Sharyati Prakash Srivastava</li>
-      <li>Current Affairs – Sharyati Prakash Srivastava</li>
-      <li>Answer Writing – Sharyati Prakash Srivastava</li>
-    </ul>
-  </div>
-</section>
+        <!-- Notes Section (Main) -->
+        <section id="notes" class="notes">
+            <div class="container">
+                <h2 class="section-title">📚 हमारे नोट्स डाउनलोड करें</h2>
+                <div class="notes-grid">
+                    <!-- Economics -->
+                    <div class="note-category">
+                        <h3>📘 Economics</h3>
+                        <ul class="note-list">
+                            <li><span>Micro Economics</span> <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a></li>
+                            <li><span>Macro Economics</span> <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a></li>
+                            <li><span>Growth & Development</span> <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a></li>
+                            <li><span>International Economics</span> <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a></li>
+                        </ul>
+                    </div>
+                    <!-- General Studies -->
+                    <div class="note-category">
+                        <h3>📗 General Studies</h3>
+                        <ul class="note-list">
+                            <li><span>History</span> <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a></li>
+                            <li><span>Geography</span> <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a></li>
+                            <li><span>Polity</span> <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a></li>
+                            <li><span>Environment</span> <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a></li>
+                        </ul>
+                    </div>
+                    <!-- Current Affairs -->
+                    <div class="note-category">
+                        <h3>📰 Current Affairs</h3>
+                        <ul class="note-list">
+                            <li><span>Monthly PDFs</span> <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a></li>
+                            <li><span>Yearly Compilation</span> <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<section id="courses" class="section fade">
-  <h2>Courses</h2>
-  <div class="grid">
-    <div class="card">GS Foundation<br><small>Faculty: Sharyati Prakash Srivastava</small></div>
-    <div class="card">GS Mains + Answer Writing</div>
-    <div class="card">Economics for UPSC</div>
-    <div class="card">Current Affairs Program</div>
-  </div>
-</section>
+        <!-- Test Series -->
+        <section id="test-series" class="test-series">
+            <div class="container">
+                <h2 class="section-title">🧪 टेस्ट सीरीज</h2>
+                <div class="test-grid">
+                    <div class="test-card">
+                        <h4>Topic-wise Tests</h4>
+                        <p>हर अध्याय के बाद अभ्यास के लिए</p>
+                        <div class="test-links">
+                            <a href="#">Test 1 PDF</a>
+                            <a href="#">Answer Key</a>
+                        </div>
+                    </div>
+                    <div class="test-card">
+                        <h4>Full-Length Tests</h4>
+                        <p>पूरे पाठ्यक्रम पर आधारित मॉक टेस्ट</p>
+                        <div class="test-links">
+                            <a href="#">Test 1 PDF</a>
+                            <a href="#">Answer Key</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<section id="resources" class="section fade">
-  <h2>Free Resources</h2>
-  <div class="grid">
-    <div class="card">GS Notes (PDF)</div>
-    <div class="card">Economics Notes</div>
-    <div class="card">Current Affairs PDFs</div>
-    <div class="card">PYQ Analysis</div>
-  </div>
-</section>
+        <!-- Announcement / Updates -->
+        <section id="announcement" class="announcement">
+            <div class="container">
+                <h2 class="section-title">📢 महत्वपूर्ण सूचनाएँ</h2>
+                <div class="announcement-list">
+                    <div class="announce-item">
+                        <h4>नए बैच की शुरुआत</h4>
+                        <p>UPSC 2025 के लिए ऑनलाइन बैच 15 मई से शुरू हो रहा है।</p>
+                        <span class="announce-date">10 अप्रैल 2025</span>
+                    </div>
+                    <div class="announce-item">
+                        <h4>कक्षा का समय</h4>
+                        <p>प्रतिदिन शाम 5:00 बजे से 7:00 बजे तक (लाइव YouTube पर)</p>
+                        <span class="announce-date">अपडेटेड</span>
+                    </div>
+                    <div class="announce-item">
+                        <h4>नोट्स अपडेट</h4>
+                        <p>अर्थशास्त्र के मॉड्यूल 2 के नए नोट्स अपलोड हो चुके हैं।</p>
+                        <span class="announce-date">2 अप्रैल 2025</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<section id="contact" class="section fade">
-  <h2>Contact</h2>
-  <p>Email: sharyatiupsc@gmail.com</p>
-  <p>Telegram | WhatsApp (to be added)</p>
-</section>
+        <!-- Video / Lecture Section -->
+        <section id="videos" class="videos">
+            <div class="container">
+                <h2 class="section-title">🎥 वीडियो लेक्चर</h2>
+                <div class="video-placeholder">
+                    <div class="video-card">
+                        <div class="video-thumb"><i class="fas fa-play-circle fa-3x"></i></div>
+                        <h4>Micro Economics - Lecture 1</h4>
+                        <p>डिमांड और सप्लाई का परिचय</p>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumb"><i class="fas fa-play-circle fa-3x"></i></div>
+                        <h4>Polity - Fundamental Rights</h4>
+                        <p>अनुच्छेद 12-35 सरल भाषा में</p>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumb"><i class="fas fa-play-circle fa-3x"></i></div>
+                        <h4>Current Affairs March 2025</h4>
+                        <p>मासिक करेंट अफेयर्स रिवीजन</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<footer>
-  <p>© Zoom IAS | No fake claims | No rank marketing</p>
-</footer>
-
-<script src="script.js"></script>
-</body>
-</html>
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class=
