@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -568,7 +567,59 @@
                 </div>
             </div>
         </section>
-
-        <!-- Contact Section -->
+              <!-- Contact Section -->
         <section id="contact" class="contact">
-            <div class=
+            <div class="container">
+                <h2 class="section-title">📞 संपर्क करें</h2>
+                <div class="contact-info">
+                    <div><i class="fab fa-whatsapp"></i> +91 98765 43210</div>
+                    <div><i class="fab fa-telegram"></i> t.me/zoomiasofficial</div>
+                    <div><i class="fas fa-envelope"></i> support@zoomias.com</div>
+                    <div><i class="fas fa-map-marker-alt"></i> लखनऊ (ऑनलाइन)</div>
+                </div>
+                <p style="text-align: center; margin-top: 30px;">किसी भी समस्या या सहायता के लिए हमसे संपर्क करें।</p>
+            </div>
+        </section>
+
+        <!-- Optional Login Section -->
+        <section id="login" class="login">
+            <div class="container">
+                <h2 class="section-title">🔐 स्टूडेंट लॉगिन (आगामी सुविधा)</h2>
+                <div class="login-box">
+                    <h3>लॉगिन करें</h3>
+                    <input type="text" placeholder="यूज़रनेम" disabled>
+                    <input type="password" placeholder="पासवर्ड" disabled>
+                    <button class="btn" disabled>लॉगिन</button>
+                    <p style="margin-top: 15px; color: gray;">फिलहाल यह सुविधा निर्माणाधीन है।</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Zoom IAS. सभी अधिकार सुरक्षित। | <a href="#">प्राइवेसी पॉलिसी</a> | <a href="#">टेलीग्राम चैनल</a></p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">📂 Suggested Google Drive Structure: Zoom IAS Notes > Economics (Micro, Macro, Growth) / GS (History, Polity, Geography, Environment) / Current Affairs (Monthly, Yearly) / Test Series</p>
+        </div>
+    </footer>
+
+    <!-- Optional: simple menu toggle script (for mobile) -->
+    <script>
+        // very basic toggle for demo - not fully implemented, but you can enhance.
+        const toggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('nav ul');
+        toggle.addEventListener('click', () => {
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+            navMenu.style.flexDirection = 'column';
+            navMenu.style.position = 'absolute';
+            navMenu.style.top = '80px';
+            navMenu.style.left = '0';
+            navMenu.style.width = '100%';
+            navMenu.style.background = 'white';
+            navMenu.style.padding = '20px';
+            navMenu.style.boxShadow = '0 5px 10px rgba(0,0,0,0.1)';
+        });
+    </script>
+</body>
+</html>
+```
