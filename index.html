@@ -1198,9 +1198,480 @@ body {
         margin: 10px;
     }
     }
+        /* ================================================ */
+/* ====== फ्लाइंग आइकॉन्स और मूविंग ऑब्जेक्ट्स ====== */
+/* ================================================ */
+
+/* ===== 1. आइकॉन्स के लिए फ्लाइंग एनिमेशन ===== */
+@keyframes flyInFromLeft {
+    0% {
+        transform: translateX(-100vw) rotate(-180deg) scale(0.1);
+        opacity: 0;
+        filter: blur(20px);
+    }
+    60% {
+        transform: translateX(20px) rotate(20deg) scale(1.2);
+        opacity: 1;
+        filter: blur(0);
+    }
+    80% {
+        transform: translateX(-5px) rotate(-5deg) scale(0.95);
+    }
+    100% {
+        transform: translateX(0) rotate(0deg) scale(1);
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+@keyframes flyInFromRight {
+    0% {
+        transform: translateX(100vw) rotate(180deg) scale(0.1);
+        opacity: 0;
+        filter: blur(20px);
+    }
+    60% {
+        transform: translateX(-20px) rotate(-20deg) scale(1.2);
+        opacity: 1;
+        filter: blur(0);
+    }
+    80% {
+        transform: translateX(5px) rotate(5deg) scale(0.95);
+    }
+    100% {
+        transform: translateX(0) rotate(0deg) scale(1);
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+@keyframes flyInFromTop {
+    0% {
+        transform: translateY(-100vh) rotate(180deg) scale(0.1);
+        opacity: 0;
+        filter: blur(20px);
+    }
+    60% {
+        transform: translateY(20px) rotate(-20deg) scale(1.2);
+        opacity: 1;
+        filter: blur(0);
+    }
+    80% {
+        transform: translateY(-5px) rotate(5deg) scale(0.95);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+@keyframes flyInFromBottom {
+    0% {
+        transform: translateY(100vh) rotate(-180deg) scale(0.1);
+        opacity: 0;
+        filter: blur(20px);
+    }
+    60% {
+        transform: translateY(-20px) rotate(20deg) scale(1.2);
+        opacity: 1;
+        filter: blur(0);
+    }
+    80% {
+        transform: translateY(5px) rotate(-5deg) scale(0.95);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+@keyframes flyInSpiral {
+    0% {
+        transform: translate(-100vw, -100vh) rotate(0deg) scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(50vw, 50vh) rotate(720deg) scale(2);
+        opacity: 0.5;
+        filter: hue-rotate(180deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(1440deg) scale(1);
+        opacity: 1;
+        filter: hue-rotate(360deg);
+    }
+}
+
+/* ===== 2. कंटीन्यूअस मूविंग ऑब्जेक्ट्स ===== */
+@keyframes floatAround {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(50px, -30px) rotate(10deg);
+    }
+    50% {
+        transform: translate(100px, 20px) rotate(20deg);
+    }
+    75% {
+        transform: translate(50px, 50px) rotate(10deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
+
+@keyframes orbit {
+    0% {
+        transform: rotate(0deg) translateX(100px) rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg) translateX(100px) rotate(-360deg);
+    }
+}
+
+@keyframes bounce3D {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    25% {
+        transform: translateY(-50px) scale(1.1);
+    }
+    50% {
+        transform: translateY(0) scale(0.9);
+    }
+    75% {
+        transform: translateY(-25px) scale(1.05);
+    }
+}
+
+@keyframes wave {
+    0% {
+        transform: translateX(-10px) translateY(-5px);
+    }
+    25% {
+        transform: translateX(10px) translateY(5px);
+    }
+    50% {
+        transform: translateX(-5px) translateY(10px);
+    }
+    75% {
+        transform: translateX(5px) translateY(-10px);
+    }
+    100% {
+        transform: translateX(-10px) translateY(-5px);
+    }
+}
+
+/* ===== 3. 3D क्यूब एनिमेशन ===== */
+@keyframes rotate3D {
+    0% {
+        transform: perspective(1000px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    25% {
+        transform: perspective(1000px) rotateX(90deg) rotateY(45deg) rotateZ(45deg);
+    }
+    50% {
+        transform: perspective(1000px) rotateX(180deg) rotateY(90deg) rotateZ(90deg);
+    }
+    75% {
+        transform: perspective(1000px) rotateX(270deg) rotateY(135deg) rotateZ(135deg);
+    }
+    100% {
+        transform: perspective(1000px) rotateX(360deg) rotateY(180deg) rotateZ(180deg);
+    }
+}
+
+@keyframes cubeSpin {
+    0% {
+        transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+    }
+    100% {
+        transform: perspective(1000px) rotateX(360deg) rotateY(360deg);
+    }
+}
+
+/* ===== 4. पार्टिकल स्ट्रीम ===== */
+@keyframes particleStream {
+    0% {
+        transform: translateX(-100%) translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(200%) translateY(-100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* ===== 5. ग्रैविटी इफेक्ट ===== */
+@keyframes gravity {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(50px);
+    }
+}
+
+/* ===== 6. वेव पूल ===== */
+@keyframes wavePool {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    25% {
+        transform: translateY(-20px) scale(1.05);
+    }
+    50% {
+        transform: translateY(0) scale(0.95);
+    }
+    75% {
+        transform: translateY(20px) scale(1.05);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ================================================ */
+/* ====== आइकॉन्स पर एप्लाई करें ====== */
+/* ================================================ */
+
+/* === सभी आइकॉन्स को फ्लाइंग इफेक्ट === */
+.feature-item i {
+    animation: flyInFromLeft 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    display: inline-block;
+}
+
+/* हर आइकॉन को अलग-अलग दिशा से आने दें */
+.feature-item:nth-child(1) i {
+    animation: flyInFromLeft 1.5s ease-out forwards;
+}
+
+.feature-item:nth-child(2) i {
+    animation: flyInFromRight 1.5s ease-out forwards;
+}
+
+.feature-item:nth-child(3) i {
+    animation: flyInFromTop 1.5s ease-out forwards;
+}
+
+.feature-item:nth-child(4) i {
+    animation: flyInFromBottom 1.5s ease-out forwards;
+}
+
+/* डाउनलोड आइकॉन्स */
+.download-link i, .download-btn i {
+    animation: flyInSpiral 1.8s ease-out forwards;
+}
+
+/* कॉन्टैक्ट सेक्शन के आइकॉन्स */
+.contact-info i {
+    animation: flyInFromLeft 1.2s ease-out forwards;
+}
+
+.contact-info div:nth-child(2) i {
+    animation: flyInFromRight 1.2s ease-out forwards;
+}
+
+.contact-info div:nth-child(3) i {
+    animation: flyInFromTop 1.2s ease-out forwards;
+}
+
+/* === फ्लाइंग के बाद भी आइकॉन्स मूव करते रहें === */
+.feature-item:hover i {
+    animation: floatAround 3s ease-in-out infinite !important;
+}
+
+.download-link:hover i {
+    animation: bounce3D 1s ease-in-out infinite !important;
+}
+
+.contact-info div:hover i {
+    animation: orbit 3s linear infinite !important;
+}
+
+/* === बैकग्राउंड में मूविंग ऑब्जेक्ट्स === */
+.moving-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.moving-object {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, rgba(102,126,234,0.2), rgba(118,75,162,0.2));
+    border-radius: 50%;
+    filter: blur(5px);
+}
+
+.moving-object:nth-child(1) {
+    top: 20%;
+    left: 10%;
+    animation: floatAround 20s ease-in-out infinite;
+}
+
+.moving-object:nth-child(2) {
+    top: 60%;
+    right: 15%;
+    width: 80px;
+    height: 80px;
+    animation: orbit 15s linear infinite;
+}
+
+.moving-object:nth-child(3) {
+    bottom: 10%;
+    left: 30%;
+    width: 30px;
+    height: 30px;
+    animation: wave 8s ease-in-out infinite;
+}
+
+.moving-object:nth-child(4) {
+    top: 40%;
+    right: 40%;
+    width: 100px;
+    height: 100px;
+    animation: gravity 12s ease-in-out infinite;
+}
+
+.moving-object:nth-child(5) {
+    top: 80%;
+    left: 80%;
+    width: 60px;
+    height: 60px;
+    animation: wavePool 10s ease-in-out infinite;
+}
+
+/* === 3D क्यूब इफेक्ट === */
+.cube-3d {
+    position: fixed;
+    bottom: -100px;
+    right: -100px;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    animation: cubeSpin 20s linear infinite;
+    pointer-events: none;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+.cube-face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border: 2px solid rgba(255,255,255,0.5);
+    opacity: 0.3;
+}
+
+.front  { transform: translateZ(100px); }
+.back   { transform: rotateY(180deg) translateZ(100px); }
+.right  { transform: rotateY(90deg) translateZ(100px); }
+.left   { transform: rotateY(-90deg) translateZ(100px); }
+.top    { transform: rotateX(90deg) translateZ(100px); }
+.bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+/* === फ्लोटिंग कार्ड्स === */
+.note-card, .test-card, .feature-item {
+    animation: flyInFromBottom 0.8s ease-out forwards;
+    transition: all 0.3s;
+}
+
+.note-card:hover, .test-card:hover, .feature-item:hover {
+    animation: gravity 0.5s ease-in-out !important;
+}
+
+/* === टेक्स्ट के लिए वेव इफेक्ट === */
+.section-title {
+    display: inline-block;
+    animation: wave 3s ease-in-out infinite;
+}
+
+.hero h2 {
+    animation: flyInFromTop 1s ease-out, wave 4s ease-in-out infinite 1s;
+}
+
+/* === बटन्स के लिए 3D इफेक्ट === */
+.btn {
+    transform-style: preserve-3d;
+    transition: transform 0.3s;
+}
+
+.btn:hover {
+    transform: perspective(500px) rotateX(10deg) translateZ(20px);
+}
+
+/* === पार्टिकल स्ट्रीम === */
+.particle-stream {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.stream-particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+    border-radius: 50%;
+    animation: particleStream 10s linear infinite;
+}
+
+.stream-particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+.stream-particle:nth-child(2) { left: 30%; animation-delay: 2s; }
+.stream-particle:nth-child(3) { left: 50%; animation-delay: 4s; }
+.stream-particle:nth-child(4) { left: 70%; animation-delay: 6s; }
+.stream-particle:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+/* === रेनबो ट्रेल इफेक्ट === */
+@keyframes rainbowTrail {
+    0% {
+        transform: translate(0, 0);
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        transform: translate(100px, -100px);
+        filter: hue-rotate(360deg);
+    }
+}
+
+.mouse-trail {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    animation: rainbowTrail 1s ease-out forwards;
+            }
     </style>
 </head>
 <body>
+    <!-- मूविंग बैकग्राउंड के लिए खाली डिव्स (जेएस अपने आप भर देगा) -->
+<div class="moving-bg" style="display: none;"></div>
+<div class="particle-stream" style="display: none;"></div>
+<div class="cube-3d" style="display: none;"></div>
     <header>
         <div class="container header-flex">
             <div class="logo">
@@ -1553,6 +2024,143 @@ function createParticles() {
 }
 
 createParticles();
+</script>
+    <!-- ===== मूविंग ऑब्जेक्ट्स के लिए जेएस ===== -->
+<script>
+// ===== 1. माउस ट्रेल इफेक्ट =====
+document.addEventListener('mousemove', function(e) {
+    const trail = document.createElement('div');
+    trail.className = 'mouse-trail';
+    trail.style.left = e.clientX - 5 + 'px';
+    trail.style.top = e.clientY - 5 + 'px';
+    document.body.appendChild(trail);
+    
+    setTimeout(() => {
+        trail.remove();
+    }, 1000);
+});
+
+// ===== 2. फ्लोटिंग आइकॉन्स को रीएनिमेट करें =====
+function resetIconAnimations() {
+    const icons = document.querySelectorAll('.feature-item i, .download-link i, .contact-info i');
+    icons.forEach(icon => {
+        icon.style.animation = 'none';
+        icon.offsetHeight; // reflow
+        icon.style.animation = null;
+    });
+}
+
+// हर 30 सेकंड में आइकॉन्स फिर से उड़ें
+setInterval(resetIconAnimations, 30000);
+
+// ===== 3. पार्टिकल स्ट्रीम बनाएं =====
+function createParticleStream() {
+    const stream = document.createElement('div');
+    stream.className = 'particle-stream';
+    
+    for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'stream-particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 10 + 's';
+        particle.style.animationDuration = 5 + Math.random() * 10 + 's';
+        stream.appendChild(particle);
+    }
+    
+    document.body.appendChild(stream);
+}
+
+// ===== 4. 3D क्यूब बनाएं =====
+function create3DCube() {
+    const cube = document.createElement('div');
+    cube.className = 'cube-3d';
+    
+    const faces = ['front', 'back', 'right', 'left', 'top', 'bottom'];
+    faces.forEach(face => {
+        const div = document.createElement('div');
+        div.className = 'cube-face ' + face;
+        cube.appendChild(div);
+    });
+    
+    document.body.appendChild(cube);
+}
+
+// ===== 5. मूविंग बैकग्राउंड ऑब्जेक्ट्स =====
+function createMovingBackground() {
+    const bg = document.createElement('div');
+    bg.className = 'moving-bg';
+    
+    for (let i = 0; i < 10; i++) {
+        const obj = document.createElement('div');
+        obj.className = 'moving-object';
+        obj.style.top = Math.random() * 100 + '%';
+        obj.style.left = Math.random() * 100 + '%';
+        obj.style.width = (20 + Math.random() * 80) + 'px';
+        obj.style.height = obj.style.width;
+        obj.style.animation = `floatAround ${10 + Math.random() * 20}s ease-in-out infinite`;
+        obj.style.animationDelay = Math.random() * 5 + 's';
+        bg.appendChild(obj);
+    }
+    
+    document.body.appendChild(bg);
+}
+
+// ===== 6. आइकॉन्स पर क्लिक इफेक्ट =====
+document.querySelectorAll('.feature-item i, .download-link i').forEach(icon => {
+    icon.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // 20 पार्टिकल्स बनाएं
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.left = e.clientX + 'px';
+            particle.style.top = e.clientY + 'px';
+            particle.style.width = '5px';
+            particle.style.height = '5px';
+            particle.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '9999';
+            particle.style.transition = 'all 1s ease-out';
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.style.transform = `translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px) rotate(${Math.random() * 360}deg)`;
+                particle.style.opacity = '0';
+            }, 10);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 1000);
+        }
+    });
+});
+
+// ===== 7. स्क्रॉल पर पैरलैक्स इफेक्ट =====
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const movingObjects = document.querySelectorAll('.moving-object');
+    
+    movingObjects.forEach(obj => {
+        const speed = 0.5;
+        obj.style.transform = `translateY(${scrolled * speed}px)`;
+    });
+});
+
+// ===== 8. लोड होते ही सब कुछ शुरू करें =====
+window.addEventListener('load', () => {
+    createMovingBackground();
+    create3DCube();
+    createParticleStream();
+    
+    // हर 10 सेकंड में नए पार्टिकल्स
+    setInterval(() => {
+        const oldStream = document.querySelector('.particle-stream');
+        if (oldStream) oldStream.remove();
+        createParticleStream();
+    }, 10000);
+});
 </script>
 </body>
 </html>
