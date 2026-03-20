@@ -3,123 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zoom IAS - Free Study Notes</title>
-    <!-- Google Fonts & Font Awesome -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>Zoom IAS - Animated & Dynamic</title>
+    <!-- Font Awesome 6 (free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts (Roboto) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Roboto', Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        :root {
+            --primary: #1e3c72;
+            --secondary: #2a5298;
+            --bg-light: #f8f9fc;
+            --text-light: #333;
+            --card-light: #ffffff;
+            --border-light: #e0e0e0;
+            
+            --bg-dark: #1a1e2b;
+            --text-dark: #f0f0f0;
+            --card-dark: #2d3349;
+            --border-dark: #40465f;
         }
         body {
-            background-color: #f8f9fc;
-            color: #333;
+            background-color: var(--bg-light);
+            color: var(--text-light);
             line-height: 1.6;
         }
-        /* color theme */
-        :root {
-            --primary-blue: #1e3c72;
-            --secondary-blue: #2a5298;
-            --light-bg: #f0f4fa;
-            --white: #ffffff;
-            --gray: #6c757d;
-            --border: #e0e0e0;
+        body.dark-mode {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
         }
-        a {
-            text-decoration: none;
-            color: inherit;
+        body.dark-mode .card,
+        body.dark-mode .note-category,
+        body.dark-mode .test-card,
+        body.dark-mode .announce-item,
+        body.dark-mode .video-card,
+        body.dark-mode .login-box {
+            background-color: var(--card-dark);
+            border-color: var(--border-dark);
+        }
+        body.dark-mode header {
+            background-color: #252b3d;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
         .container {
             width: 90%;
             max-width: 1200px;
-            margin: auto;
+            margin: 0 auto;
             padding: 20px 0;
-        }
-        .btn {
-            display: inline-block;
-            background: var(--primary-blue);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background 0.3s;
-            border: none;
-            cursor: pointer;
-            font-weight: 500;
-        }
-        .btn:hover {
-            background: var(--secondary-blue);
-        }
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary-blue);
-            color: var(--primary-blue);
-        }
-        .btn-outline:hover {
-            background: var(--primary-blue);
-            color: white;
         }
         /* header */
         header {
-            background: var(--white);
+            background-color: white;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
-        header .container {
+        .header-flex {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            flex-wrap: wrap;
         }
         .logo h1 {
+            color: var(--primary);
             font-size: 1.8rem;
-            color: var(--primary-blue);
         }
         .logo p {
             font-size: 0.8rem;
-            color: var(--gray);
-            letter-spacing: 1px;
+            color: #666;
+        }
+        body.dark-mode .logo p {
+            color: #aaa;
         }
         nav ul {
             display: flex;
-            list-style: none;
             gap: 20px;
+            list-style: none;
         }
-        nav ul li a {
+        nav a {
+            text-decoration: none;
+            color: inherit;
             font-weight: 500;
             padding: 5px 10px;
             border-radius: 4px;
         }
-        nav ul li a:hover {
-            background: var(--light-bg);
-            color: var(--primary-blue);
+        nav a:hover {
+            background-color: rgba(30,60,114,0.1);
         }
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--primary);
+            border-radius: 30px;
+            padding: 8px 15px;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            color: inherit;
         }
-        /* hero */
+        .theme-toggle i {
+            font-size: 1.2rem;
+        }
+        /* hero section */
         .hero {
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             text-align: center;
-            padding: 80px 20px;
+            padding: 100px 20px;
         }
         .hero h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
+            min-height: 4rem;
         }
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 30px;
-            opacity: 0.9;
         }
         .hero-buttons {
             display: flex;
@@ -127,201 +134,219 @@
             justify-content: center;
             flex-wrap: wrap;
         }
-        .hero .btn {
+        .btn {
+            display: inline-block;
             background: white;
-            color: var(--primary-blue);
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
             font-weight: 700;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
         }
-        .hero .btn:hover {
-            background: var(--light-bg);
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
-        /* about section */
-        .about {
-            background: var(--white);
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        /* scroll animation base */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+        .fade-up.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* section titles */
+        .section-title {
             text-align: center;
-            padding: 60px 20px;
-        }
-        .about h3 {
             font-size: 2rem;
-            color: var(--primary-blue);
-            margin-bottom: 20px;
+            margin: 40px 0;
+            color: var(--primary);
         }
-        .about p {
-            max-width: 800px;
-            margin: auto;
-            font-size: 1.1rem;
+        body.dark-mode .section-title {
+            color: #8ab4f8;
         }
         /* features */
-        .features {
-            background: var(--light-bg);
-            padding: 50px 20px;
-        }
-        .features .container {
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
             text-align: center;
         }
+        .feature-item {
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        body.dark-mode .feature-item {
+            background: var(--card-dark);
+        }
         .feature-item i {
             font-size: 3rem;
-            color: var(--primary-blue);
+            color: var(--primary);
             margin-bottom: 15px;
         }
-        .feature-item h4 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
+        /* notes section with search */
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
         }
-        /* notes section */
-        .notes {
-            padding: 60px 20px;
-            background: var(--white);
+        .search-bar input {
+            width: 300px;
+            padding: 12px 20px;
+            border: 1px solid var(--border-light);
+            border-radius: 30px 0 0 30px;
+            outline: none;
+            font-size: 1rem;
         }
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            color: var(--primary-blue);
-            margin-bottom: 40px;
+        .search-bar button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .category-filters {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        .cat-btn {
+            background: white;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .cat-btn.active, .cat-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        body.dark-mode .cat-btn {
+            background: transparent;
+            border-color: #8ab4f8;
+            color: #8ab4f8;
+        }
+        body.dark-mode .cat-btn.active,
+        body.dark-mode .cat-btn:hover {
+            background: #8ab4f8;
+            color: #1a1e2b;
         }
         .notes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
         }
-        .note-category {
-            background: var(--light-bg);
+        .note-card {
+            background: white;
             border-radius: 10px;
             padding: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .note-category h3 {
-            color: var(--primary-blue);
-            border-bottom: 2px solid var(--primary-blue);
-            padding-bottom: 10px;
+        .note-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        .note-card h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        .note-card .category-tag {
+            display: inline-block;
+            background: #e0e7ff;
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
             margin-bottom: 15px;
         }
-        .note-list {
-            list-style: none;
+        body.dark-mode .category-tag {
+            background: #40465f;
+            color: #8ab4f8;
         }
-        .note-list li {
-            margin: 15px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .note-list li span {
+        .note-card .download-link {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 15px;
             font-weight: 500;
         }
-        .download-btn {
-            background: var(--primary-blue);
+        .load-more-btn {
+            display: block;
+            width: fit-content;
+            margin: 40px auto;
+            background: var(--primary);
             color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            transition: background 0.3s;
-        }
-        .download-btn:hover {
-            background: var(--secondary-blue);
+            border: none;
+            padding: 12px 40px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
         }
         /* test series */
-        .test-series {
-            background: var(--light-bg);
-            padding: 60px 20px;
-        }
         .test-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
         }
         .test-card {
-            background: var(--white);
+            background: white;
             padding: 25px;
             border-radius: 10px;
             text-align: center;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.05);
         }
         .test-card h4 {
             font-size: 1.4rem;
-            color: var(--primary-blue);
+            color: var(--primary);
             margin-bottom: 10px;
-        }
-        .test-card p {
-            margin-bottom: 20px;
         }
         .test-links {
             display: flex;
             justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
+            margin-top: 20px;
         }
         .test-links a {
-            background: var(--primary-blue);
+            background: var(--primary);
             color: white;
             padding: 8px 15px;
             border-radius: 5px;
-            font-size: 0.9rem;
+            text-decoration: none;
         }
-        /* announcement */
-        .announcement {
-            background: var(--white);
-            padding: 60px 20px;
-        }
-        .announcement-list {
-            max-width: 800px;
-            margin: auto;
-        }
+        /* announcements */
         .announce-item {
-            background: var(--light-bg);
+            background: white;
             margin-bottom: 15px;
             padding: 15px 20px;
-            border-left: 5px solid var(--primary-blue);
+            border-left: 5px solid var(--primary);
             border-radius: 0 8px 8px 0;
         }
-        .announce-item h4 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            color: var(--primary-blue);
-        }
-        .announce-date {
-            font-size: 0.85rem;
-            color: var(--gray);
-        }
-        /* video section */
-        .videos {
-            background: var(--light-bg);
-            padding: 60px 20px;
-        }
-        .video-placeholder {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            text-align: center;
-        }
-        .video-card {
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .video-thumb {
-            background: #ddd;
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray);
-        }
-        .video-card h4 {
-            padding: 15px 10px 5px;
-        }
-        .video-card p {
-            padding: 0 10px 15px;
-        }
         /* contact */
-        .contact {
-            background: var(--white);
-            padding: 60px 20px;
-        }
         .contact-info {
             display: flex;
             flex-direction: column;
@@ -329,21 +354,7 @@
             gap: 20px;
             font-size: 1.2rem;
         }
-        .contact-info i {
-            color: var(--primary-blue);
-            width: 30px;
-        }
-        .contact-info div {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        /* login (optional) */
-        .login {
-            background: var(--light-bg);
-            padding: 60px 20px;
-            text-align: center;
-        }
+        /* login */
         .login-box {
             max-width: 400px;
             margin: auto;
@@ -352,38 +363,23 @@
             border-radius: 10px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        .login-box h3 {
-            color: var(--primary-blue);
-            margin-bottom: 20px;
-        }
-        .login-box input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid var(--border);
-            border-radius: 5px;
-        }
-        .login-box .btn {
-            width: 100%;
-        }
         /* footer */
         footer {
-            background: var(--primary-blue);
+            background: var(--primary);
             color: white;
             text-align: center;
             padding: 20px;
-            font-size: 0.9rem;
-        }
-        footer a {
-            color: #ffd966;
+            margin-top: 40px;
         }
         /* responsive */
         @media (max-width: 768px) {
-            nav ul {
-                display: none;
+            .header-flex {
+                flex-direction: column;
+                gap: 10px;
             }
-            .menu-toggle {
-                display: block;
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
             }
             .hero h2 {
                 font-size: 2rem;
@@ -393,124 +389,103 @@
 </head>
 <body>
     <header>
-        <div class="container">
+        <div class="container header-flex">
             <div class="logo">
                 <h1>Zoom IAS</h1>
-                <p>Your Gateway to Success in Competitive Exams</p>
+                <p>Your Gateway to Success</p>
             </div>
             <nav>
                 <ul>
                     <li><a href="#home">होम</a></li>
                     <li><a href="#notes">नोट्स</a></li>
-                    <li><a href="#test-series">टेस्ट सीरीज</a></li>
+                    <li><a href="#test-series">टेस्ट</a></li>
                     <li><a href="#announcement">अपडेट</a></li>
-                    <li><a href="#videos">वीडियो</a></li>
                     <li><a href="#contact">संपर्क</a></li>
-                    <li><a href="#login">लॉगिन</a></li>
                 </ul>
             </nav>
-            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+                <span>डार्क मोड</span>
+            </button>
         </div>
     </header>
 
     <main>
-        <!-- Home Section (Hero + About + Features) -->
-        <section id="home">
-            <div class="hero">
-                <h2>Download Free High-Quality Notes for UPSC, UPPCS & Economics</h2>
+        <!-- होम सेक्शन (हीरो) -->
+        <section id="home" class="hero">
+            <div class="container">
+                <h2 id="typing-text"></h2>
                 <p>Exam-Oriented Content | Structured PDFs | हर महीने करेंट अफेयर्स</p>
                 <div class="hero-buttons">
                     <a href="#notes" class="btn"><i class="fas fa-download"></i> Download Notes</a>
                     <a href="#" class="btn btn-outline"><i class="fab fa-telegram"></i> Join Telegram</a>
                 </div>
             </div>
+        </section>
 
-            <div class="about">
-                <div class="container">
-                    <h3>हमारे बारे में</h3>
-                    <p>Zoom IAS provides high-quality notes for Economics, GS, and Current Affairs specially designed for competitive exams. हमारी टीम एक्सपर्ट्स द्वारा तैयार किए गए नोट्स आपकी तैयारी को नई दिशा देते हैं।</p>
-                </div>
-            </div>
-
-            <div class="features">
-                <div class="container">
+        <!-- फीचर्स (एनिमेटेड) -->
+        <section class="features fade-up">
+            <div class="container">
+                <div class="features-grid">
                     <div class="feature-item">
                         <i class="fas fa-sync-alt"></i>
                         <h4>Updated Notes</h4>
-                        <p>नवीनतम पाठ्यक्रम और परीक्षा पैटर्न के अनुसार</p>
+                        <p>नवीनतम पाठ्यक्रम के अनुसार</p>
                     </div>
                     <div class="feature-item">
                         <i class="fas fa-bullseye"></i>
                         <h4>Exam-Oriented</h4>
-                        <p>हर टॉपिक को परीक्षा की दृष्टि से कवर किया गया</p>
+                        <p>हर टॉपिक परीक्षा की दृष्टि से</p>
                     </div>
                     <div class="feature-item">
                         <i class="fas fa-gift"></i>
                         <h4>Free Access</h4>
-                        <p>बिल्कुल मुफ्त, बिना किसी शर्त के</p>
+                        <p>बिल्कुल मुफ्त</p>
                     </div>
                     <div class="feature-item">
                         <i class="fas fa-file-pdf"></i>
                         <h4>Structured PDFs</h4>
-                        <p>आसान पढ़ाई के लिए अध्यायवार PDF</p>
+                        <p>अध्यायवार PDF</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Notes Section (Main) -->
-        <section id="notes" class="notes">
+        <!-- डायनामिक नोट्स सेक्शन -->
+        <section id="notes" class="notes fade-up">
             <div class="container">
-                <h2 class="section-title">📚 हमारे नोट्स डाउनलोड करें</h2>
-                <div class="notes-grid">
-                    <!-- Economics -->
-                    <div class="note-category">
-                        <h3>📘 Economics</h3>
-                        <ul class="note-list">
-                            <li><span>Micro Economics</span> <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a></li>
-                            <li><span>Macro Economics</span> <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a></li>
-                            <li><span>Growth & Development</span> <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a></li>
-                            <li><span>International Economics</span> <a href="https://drive.google.com/uc?export=download&id=1riosb6oky7esm8XaK3tsh-1GarKTlySR" class="download-btn"><i class="fas fa-download"></i> Download</a></li>
-                        </ul>
-                    </div>
-                    <!-- General Studies -->
-                    <div class="note-category">
-                        <h3>📗 General Studies</h3>
-                        <ul class="note-list">
-                            <li><span>History</span> <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a></li>
-                            <li><span>Geography</span> <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a></li>
-                            <li><span>Polity</span> <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a></li>
-                            <li><span>Environment</span> <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a></li>
-                        </ul>
-                    </div>
-                    <!-- Current Affairs -->
-                    <div class="note-category">
-                        <h3>📰 Current Affairs</h3>
-                        <ul class="note-list">
-                            <li><span>Monthly PDFs</span> <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a></li>
-                            <li><span>Yearly Compilation</span> <a href="https://drive.google.com/uc?export=download&id=12KgiFycyn6kw7ClJmVGGfOGLfaIznwMC" class="download-btn"><i class="fas fa-download"></i> Download</a></li>
-                        </ul>
-                    </div>
+                <h2 class="section-title">📚 हमारे नोट्स</h2>
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="नोट्स खोजें...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
                 </div>
+                <div class="category-filters" id="categoryFilters">
+                    <button class="cat-btn active" data-cat="all">सभी</button>
+                    <button class="cat-btn" data-cat="Economics">Economics</button>
+                    <button class="cat-btn" data-cat="GS">GS</button>
+                    <button class="cat-btn" data-cat="Current Affairs">Current Affairs</button>
+                </div>
+                <div class="notes-grid" id="notesContainer"></div>
+                <button class="load-more-btn" id="loadMoreBtn">और नोट्स लोड करें</button>
             </div>
         </section>
 
-        <!-- Test Series -->
-        <section id="test-series" class="test-series">
+        <!-- टेस्ट सीरीज -->
+        <section id="test-series" class="test-series fade-up">
             <div class="container">
                 <h2 class="section-title">🧪 टेस्ट सीरीज</h2>
                 <div class="test-grid">
                     <div class="test-card">
                         <h4>Topic-wise Tests</h4>
-                        <p>हर अध्याय के बाद अभ्यास के लिए</p>
+                        <p>हर अध्याय के बाद अभ्यास</p>
                         <div class="test-links">
-                            <a href="https://drive.google.com/uc?export=download&id=1FaN1O99Hg9qQDcdRE4pEYGYHQ-ZtV1JF">Test 1 PDF</a>
+                            <a href="#">Test 1 PDF</a>
                             <a href="#">Answer Key</a>
                         </div>
                     </div>
                     <div class="test-card">
                         <h4>Full-Length Tests</h4>
-                        <p>पूरे पाठ्यक्रम पर आधारित मॉक टेस्ट</p>
+                        <p>पूरे पाठ्यक्रम पर मॉक टेस्ट</p>
                         <div class="test-links">
                             <a href="#">Test 1 PDF</a>
                             <a href="#">Answer Key</a>
@@ -520,104 +495,200 @@
             </div>
         </section>
 
-        <!-- Announcement / Updates -->
-        <section id="announcement" class="announcement">
+        <!-- अनाउंसमेंट -->
+        <section id="announcement" class="announcement fade-up">
             <div class="container">
                 <h2 class="section-title">📢 महत्वपूर्ण सूचनाएँ</h2>
                 <div class="announcement-list">
                     <div class="announce-item">
                         <h4>नए बैच की शुरुआत</h4>
-                        <p>UPSC 2027 के लिए ऑनलाइन बैच 15 मई से शुरू हो रहा है।</p>
-                        <span class="announce-date">20 अप्रैल 2026</span>
+                        <p>UPSC 2025 के लिए ऑनलाइन बैच 15 मई से</p>
+                        <span class="announce-date">10 अप्रैल 2025</span>
                     </div>
                     <div class="announce-item">
                         <h4>कक्षा का समय</h4>
-                        <p>प्रतिदिन शाम 5:00 बजे से 7:00 बजे तक (लाइव Google MEET पर)</p>
+                        <p>प्रतिदिन शाम 5:00 बजे से 7:00 बजे तक</p>
                         <span class="announce-date">अपडेटेड</span>
-                    </div>
-                    <div class="announce-item">
-                        <h4>नोट्स अपडेट</h4>
-                        <p>अर्थशास्त्र के मॉड्यूल 2 के नए नोट्स अपलोड होने वाले हैं।</p>
-                        <span class="announce-date"> अप्रैल 2026</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Video / Lecture Section -->
-        <section id="videos" class="videos">
-            <div class="container">
-                <h2 class="section-title">🎥 वीडियो लेक्चर</h2>
-                <div class="video-placeholder">
-                    <div class="video-card">
-                        <div class="video-thumb"><i class="fas fa-play-circle fa-3x"></i></div>
-                        <h4>Micro Economics - Lecture 1</h4>
-                        <p>डिमांड और सप्लाई का परिचय</p>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-thumb"><i class="fas fa-play-circle fa-3x"></i></div>
-                        <h4>Polity - Fundamental Rights</h4>
-                        <p>अनुच्छेद 12-35 सरल भाषा में</p>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-thumb"><i class="fas fa-play-circle fa-3x"></i></div>
-                        <h4>Current Affairs March 2026</h4>
-                        <p>मासिक करेंट अफेयर्स रिवीजन</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-              <!-- Contact Section -->
-        <section id="contact" class="contact">
+        <!-- कॉन्टैक्ट -->
+        <section id="contact" class="contact fade-up">
             <div class="container">
                 <h2 class="section-title">📞 संपर्क करें</h2>
                 <div class="contact-info">
-                    <div><i class="fab fa-whatsapp"></i> +91 8299856021</div>
+                    <div><i class="fab fa-whatsapp"></i> +91 98765 43210</div>
                     <div><i class="fab fa-telegram"></i> t.me/zoomiasofficial</div>
-                    <div><i class="fas fa-envelope"></i> https://chat.whatsapp.com/IUq8WWzUBw8KU3fpfocL1X?mode=gi_t</div>
-                    <div><i class="fas fa-map-marker-alt"></i> लखनऊ (ऑनलाइन)</div>
+                    <div><i class="fas fa-envelope"></i> support@zoomias.com</div>
                 </div>
-                <p style="text-align: center; margin-top: 30px;">किसी भी समस्या या सहायता के लिए हमसे संपर्क करें।</p>
             </div>
         </section>
 
-        <!-- Optional Login Section -->
-        <section id="login" class="login">
+        <!-- लॉगिन सेक्शन (ऑप्शनल) -->
+        <section id="login" class="login fade-up">
             <div class="container">
-                <h2 class="section-title">🔐 स्टूडेंट लॉगिन (आगामी सुविधा)</h2>
+                <h2 class="section-title">🔐 स्टूडेंट लॉगिन</h2>
                 <div class="login-box">
                     <h3>लॉगिन करें</h3>
                     <input type="text" placeholder="यूज़रनेम" disabled>
                     <input type="password" placeholder="पासवर्ड" disabled>
                     <button class="btn" disabled>लॉगिन</button>
-                    <p style="margin-top: 15px; color: gray;">फिलहाल यह सुविधा निर्माणाधीन है।</p>
+                    <p style="margin-top: 15px;">फिलहाल यह सुविधा निर्माणाधीन है।</p>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="container">
-            <p>© 2026 Zoom IAS. सभी अधिकार सुरक्षित। | <a href="#">प्राइवेसी पॉलिसी</a> | <a href="#">टेलीग्राम चैनल</a></p>
-            <p style="margin-top: 10px; font-size: 0.8rem;">📂 Suggested Google Drive Structure: Zoom IAS Notes > Economics (Micro, Macro, Growth) / GS (History, Polity, Geography, Environment) / Current Affairs (Monthly, Yearly) / Test Series</p>
-        </div>
+        <p>© 2025 Zoom IAS. सभी अधिकार सुरक्षित।</p>
+        <p style="margin-top: 10px;">📂 Google Drive: Zoom IAS Notes > Economics / GS / Current Affairs</p>
     </footer>
 
-    <!-- Optional: simple menu toggle script (for mobile) -->
+    <!-- JavaScript (सारी डायनामिक और एनिमेशन) -->
     <script>
-        // very basic toggle for demo - not fully implemented, but you can enhance.
-        const toggle = document.querySelector('.menu-toggle');
-        const navMenu = document.querySelector('nav ul');
-        toggle.addEventListener('click', () => {
-            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
-            navMenu.style.flexDirection = 'column';
-            navMenu.style.position = 'absolute';
-            navMenu.style.top = '80px';
-            navMenu.style.left = '0';
-            navMenu.style.width = '100%';
-            navMenu.style.background = 'white';
-            navMenu.style.padding = '20px';
-            navMenu.style.boxShadow = '0 5px 10px rgba(0,0,0,0.1)';
+        // ==================== डार्क/लाइट मोड टॉगल ====================
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = themeToggle.querySelector('i');
+            const span = themeToggle.querySelector('span');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.className = 'fas fa-sun';
+                span.textContent = 'लाइट मोड';
+            } else {
+                icon.className = 'fas fa-moon';
+                span.textContent = 'डार्क मोड';
+            }
+        });
+
+        // ==================== टाइपिंग एनिमेशन ====================
+        const typingElement = document.getElementById('typing-text');
+        const phrases = [
+            "Free Notes for UPSC / UPPCS / Economics",
+            "Download High-Quality Notes",
+            "Expert-Curated Study Material",
+            "Your Success Partner"
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        function typeEffect() {
+            const currentPhrase = phrases[phraseIndex];
+            if (isDeleting) {
+                typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                setTimeout(typeEffect, 2000); // रुकना
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                setTimeout(typeEffect, 500);
+            } else {
+                setTimeout(typeEffect, isDeleting ? 50 : 100);
+            }
+        }
+        typeEffect();
+               // ==================== डायनामिक नोट्स डेटा (यहाँ आप अपने लिंक डालें) ====================
+        const notesData = [
+            { title: "Micro Economics", category: "Economics", link: "#", desc: "माँग, उपयोगिता, उत्पादन लागत" },
+            { title: "Macro Economics", category: "Economics", link: "#", desc: "राष्ट्रीय आय, मुद्रा, बैंकिंग" },
+            { title: "Growth & Development", category: "Economics", link: "#", desc: "आर्थिक विकास, मॉडल, नीतियाँ" },
+            { title: "International Economics", category: "Economics", link: "#", desc: "व्यापार, भुगतान संतुलन, WTO" },
+            { title: "History", category: "GS", link: "#", desc: "प्राचीन, मध्यकाल, आधुनिक भारत" },
+            { title: "Geography", category: "GS", link: "#", desc: "भौतिक, मानव, भारत का भूगोल" },
+            { title: "Polity", category: "GS", link: "#", desc: "संविधान, राजव्यवस्था, शासन" },
+            { title: "Environment", category: "GS", link: "#", desc: "पारिस्थितिकी, जैव विविधता, जलवायु" },
+            { title: "Monthly PDFs", category: "Current Affairs", link: "#", desc: "मार्च 2025 करेंट अफेयर्स" },
+            { title: "Yearly Compilation", category: "Current Affairs", link: "#", desc: "2024 संकलन" },
+            { title: "Economics Special", category: "Economics", link: "#", desc: "भारतीय अर्थव्यवस्था के मुद्दे" },
+            { title: "GS Mains", category: "GS", link: "#", desc: "मुख्य परीक्षा के लिए नोट्स" }
+        ];
+
+        let displayedNotes = 6; // पहले कितने दिखाएँ
+        let filteredNotes = notesData; // फिल्टर के बाद का डेटा
+
+        // नोट्स को HTML में रेंडर करने का फंक्शन
+        function renderNotes() {
+            const container = document.getElementById('notesContainer');
+            const notesToShow = filteredNotes.slice(0, displayedNotes);
+            container.innerHTML = '';
+            notesToShow.forEach(note => {
+                const card = document.createElement('div');
+                card.className = 'note-card';
+                card.innerHTML = `
+                    <h4>${note.title}</h4>
+                    <span class="category-tag">${note.category}</span>
+                    <p>${note.desc}</p>
+                    <a href="${note.link}" class="download-link" target="_blank"><i class="fas fa-download"></i> Download</a>
+                `;
+                container.appendChild(card);
+            });
+            // लोड मोर बटन छुपाना/दिखाना
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            if (displayedNotes >= filteredNotes.length) {
+                loadMoreBtn.style.display = 'none';
+            } else {
+                loadMoreBtn.style.display = 'block';
+            }
+        }
+
+        // सर्च फंक्शन
+        function filterNotes() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const activeCat = document.querySelector('.cat-btn.active').dataset.cat;
+            filteredNotes = notesData.filter(note => {
+                const matchesSearch = note.title.toLowerCase().includes(searchTerm) || note.desc.toLowerCase().includes(searchTerm);
+                const matchesCat = activeCat === 'all' || note.category === activeCat;
+                return matchesSearch && matchesCat;
+            });
+            displayedNotes = 6;
+            renderNotes();
+        }
+
+        // इवेंट लिसनर
+        document.getElementById('searchInput').addEventListener('input', filterNotes);
+        document.getElementById('searchBtn').addEventListener('click', filterNotes);
+        
+        // कैटेगरी बटन पर क्लिक
+        document.querySelectorAll('.cat-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                filterNotes();
+            });
+        });
+
+        // लोड मोर बटन
+        document.getElementById('loadMoreBtn').addEventListener('click', function() {
+            displayedNotes += 6;
+            renderNotes();
+        });
+
+        // इनिशियल रेंडर
+        renderNotes();
+
+        // ==================== स्क्रॉल एनिमेशन (fade-up) ====================
+        const faders = document.querySelectorAll('.fade-up');
+        const appearOptions = {
+            threshold: 0.2,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('appear');
+                observer.unobserve(entry.target);
+            });
+        }, appearOptions);
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
         });
     </script>
 </body>
