@@ -685,6 +685,519 @@ footer::before {
         background: rgba(0, 0, 0, 0.4);
     }
 }
+        /* ================================================ */
+/* ====== जबर्दस्त एनिमेशन कलेक्शन ====== */
+/* ================================================ */
+
+/* ===== 1. 3D परसेपेक्टिव एनिमेशन ===== */
+@keyframes float3D {
+    0% { transform: perspective(1000px) rotateY(0deg) translateZ(0); }
+    25% { transform: perspective(1000px) rotateY(5deg) translateZ(20px); }
+    50% { transform: perspective(1000px) rotateY(0deg) translateZ(40px); }
+    75% { transform: perspective(1000px) rotateY(-5deg) translateZ(20px); }
+    100% { transform: perspective(1000px) rotateY(0deg) translateZ(0); }
+}
+
+@keyframes tiltIn {
+    0% { transform: perspective(500px) rotateX(30deg) translateY(100px); opacity: 0; }
+    100% { transform: perspective(500px) rotateX(0) translateY(0); opacity: 1; }
+}
+
+/* ===== 2. पार्टिकल एनिमेशन ===== */
+@keyframes particleFloat {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes confetti {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* ===== 3. नियॉन पल्स ===== */
+@keyframes neonPulse {
+    0% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff00de, 0 0 30px #ff00de; }
+    50% { text-shadow: 0 0 10px #fff, 0 0 20px #ff00de, 0 0 40px #ff00de, 0 0 60px #ff00de; }
+    100% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff00de, 0 0 30px #ff00de; }
+}
+
+@keyframes neonGlow {
+    0% { filter: hue-rotate(0deg) brightness(1); }
+    50% { filter: hue-rotate(30deg) brightness(1.2); }
+    100% { filter: hue-rotate(0deg) brightness(1); }
+}
+
+/* ===== 4. स्प्लिट टेक्स्ट एनिमेशन ===== */
+@keyframes splitReveal {
+    0% { clip-path: inset(0 100% 0 0); opacity: 0; }
+    50% { clip-path: inset(0 0 0 0); opacity: 1; }
+    100% { clip-path: inset(0 0 0 0); opacity: 1; }
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+/* ===== 5. लिक्विड इफेक्ट ===== */
+@keyframes liquidWave {
+    0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+    50% { border-radius: 50% 60% 30% 40% / 70% 40% 60% 30%; }
+    75% { border-radius: 70% 30% 50% 50% / 30% 60% 40% 70%; }
+    100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+}
+
+@keyframes liquidMorph {
+    0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+    25% { border-radius: 75% 25% 45% 55% / 30% 65% 35% 70%; }
+    50% { border-radius: 61% 39% 37% 63% / 52% 53% 47% 48%; }
+    75% { border-radius: 38% 62% 63% 37% / 48% 38% 62% 52%; }
+    100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+}
+
+/* ===== 6. मैग्नेटिक होवर ===== */
+@keyframes magneticPulse {
+    0% { transform: scale(1); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+    50% { transform: scale(1.1); box-shadow: 0 15px 30px rgba(102,126,234,0.4); }
+    100% { transform: scale(1); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+}
+
+/* ===== 7. कार्ड स्टैक एनिमेशन ===== */
+@keyframes cardStack {
+    0% { transform: translateY(0) rotate(0deg); }
+    33% { transform: translateY(-10px) rotate(2deg); }
+    66% { transform: translateY(-5px) rotate(-1deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* ===== 8. पैरलैक्स स्क्रॉल ===== */
+@keyframes parallax {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+
+/* ===== 9. रिपल इफेक्ट ===== */
+@keyframes ripple {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(4); opacity: 0; }
+}
+
+/* ===== 10. शैटर इफेक्ट ===== */
+@keyframes shatter {
+    0% { transform: translate(0,0) rotate(0deg); opacity: 1; }
+    20% { transform: translate(10px,-10px) rotate(5deg); opacity: 0.8; }
+    40% { transform: translate(-15px,15px) rotate(-5deg); opacity: 0.6; }
+    60% { transform: translate(20px,0px) rotate(10deg); opacity: 0.4; }
+    80% { transform: translate(-10px,-15px) rotate(-10deg); opacity: 0.2; }
+    100% { transform: translate(30px,30px) rotate(15deg); opacity: 0; }
+}
+
+/* ================================================ */
+/* ====== में एप्लिकेशन ====== */
+/* ================================================ */
+
+/* === होम पेज का हीरो सेक्शन === */
+.hero {
+    position: relative;
+    overflow: hidden;
+    animation: neonGlow 5s infinite;
+}
+
+.hero h2 {
+    animation: splitReveal 1.5s ease-out, neonPulse 3s infinite 1.5s;
+    background: linear-gradient(90deg, #fff, #ffd700, #ff6b6b, #4ecdc4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 300% 300%;
+    animation: gradientShift 5s ease infinite, neonPulse 3s infinite;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
+    animation: particleFloat 15s linear infinite;
+    pointer-events: none;
+}
+
+.hero::after {
+    content: '✨';
+    position: absolute;
+    font-size: 200px;
+    opacity: 0.1;
+    animation: float3D 10s ease infinite;
+    pointer-events: none;
+}
+
+/* === नेविगेशन मेन्यू === */
+nav ul li a {
+    position: relative;
+    transition: all 0.3s;
+}
+
+nav ul li a:hover {
+    animation: magneticPulse 0.5s ease;
+    color: #ff6b6b !important;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ff6b6b, transparent);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1);
+}
+
+/* === कार्ड्स === */
+.note-card, .test-card, .feature-item {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    animation: tiltIn 0.8s ease-out;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.note-card:hover, .test-card:hover, .feature-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    animation: magneticPulse 1s ease infinite;
+    border: 1px solid rgba(102,126,234,0.5);
+}
+
+.note-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255,255,255,0.2) 50%,
+        transparent 70%
+    );
+    transform: translateX(-100%) rotate(45deg);
+    transition: transform 0.6s;
+}
+
+.note-card:hover::before {
+    transform: translateX(100%) rotate(45deg);
+}
+
+/* === बटन्स === */
+.btn {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    animation: neonGlow 4s infinite;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    background-size: 400%;
+    border-radius: 50px;
+    z-index: -2;
+    filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.btn:hover::after {
+    opacity: 1;
+    animation: gradientShift 3s linear infinite;
+}
+
+/* === टाइटल्स === */
+.section-title {
+    position: relative;
+    display: inline-block;
+    animation: glitch 3s infinite;
+}
+
+.section-title::before {
+    content: attr(data-text);
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    width: 100%;
+    color: #ff00c1;
+    overflow: hidden;
+    clip-path: inset(0 0 0 0);
+    animation: glitch 2s infinite;
+    opacity: 0.8;
+}
+
+.section-title::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 100%;
+    color: #00fff9;
+    overflow: hidden;
+    clip-path: inset(0 0 0 0);
+    animation: glitch 2s infinite reverse;
+    opacity: 0.8;
+}
+
+/* === आइकॉन्स === */
+.feature-item i {
+    animation: float3D 3s ease infinite;
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #f5576c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 300% 300%;
+    animation: gradientShift 5s ease infinite, float3D 3s ease infinite;
+}
+
+.feature-item:nth-child(2) i { animation-delay: 0.2s; }
+.feature-item:nth-child(3) i { animation-delay: 0.4s; }
+.feature-item:nth-child(4) i { animation-delay: 0.6s; }
+
+/* === टेस्ट सीरीज कार्ड्स === */
+.test-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.test-card::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: ripple 3s infinite;
+}
+
+/* === अनाउंसमेंट सेक्शन === */
+.announce-item {
+    position: relative;
+    overflow: hidden;
+    animation: tiltIn 0.8s ease-out;
+    background: linear-gradient(90deg, rgba(102,126,234,0.1), transparent);
+}
+
+.announce-item:hover {
+    transform: translateX(10px);
+    background: linear-gradient(90deg, rgba(102,126,234,0.2), transparent);
+}
+
+.announce-item::before {
+    content: '📢';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    opacity: 0.2;
+    animation: float3D 2s ease infinite;
+}
+
+/* === कॉन्टैक्ट सेक्शन === */
+.contact-info div {
+    position: relative;
+    padding: 15px 25px;
+    border-radius: 50px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s;
+    animation: tiltIn 0.8s ease-out;
+}
+
+.contact-info div:hover {
+    transform: scale(1.05) translateY(-5px);
+    background: rgba(102,126,234,0.2);
+    border-color: #667eea;
+}
+
+.contact-info i {
+    animation: neonGlow 2s infinite;
+}
+
+/* === फूटर === */
+footer {
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+    animation: shimmer 5s infinite;
+}
+
+footer p {
+    position: relative;
+    z-index: 1;
+    animation: neonPulse 4s infinite;
+}
+
+/* === पार्टिकल बैकग्राउंड === */
+.particle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.particle span {
+    position: absolute;
+    display: block;
+    width: 5px;
+    height: 5px;
+    background: rgba(102,126,234,0.3);
+    border-radius: 50%;
+    animation: particleFloat 10s linear infinite;
+}
+
+/* === ग्लासमॉर्फिज्म कार्ड्स === */
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 15px;
+    padding: 20px;
+    transition: all 0.3s;
+}
+
+.glass-card:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* === मैग्नेटिक बटन (जेएस के साथ) === */
+.magnetic-btn {
+    transition: transform 0.2s;
+}
+
+/* === कस्टम स्क्रॉलबार === */
+::-webkit-scrollbar {
+    width: 10px;
+    background: linear-gradient(180deg, #667eea, #764ba2);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #f093fb, #f5576c);
+    border-radius: 5px;
+    animation: neonGlow 2s infinite;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #ff6b6b, #ffd93d);
+}
+
+/* === लोडिंग एनिमेशन === */
+@keyframes loadingPulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.loading {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(102,126,234,0.3);
+    border-top: 3px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* === सक्सेस टिक एनिमेशन === */
+@keyframes checkmark {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.success-check {
+    animation: checkmark 0.5s ease-out;
+}
+
+/* === पेज ट्रांजिशन === */
+@keyframes pageTransition {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+body {
+    animation: pageTransition 0.8s ease-out;
+}
+
+/* === मोबाइल के लिए ऑप्टिमाइज्ड === */
+@media (max-width: 768px) {
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+    
+    .note-card, .test-card {
+        margin: 10px;
+    }
+    }
     </style>
 </head>
 <body>
@@ -992,6 +1505,55 @@ footer::before {
             appearOnScroll.observe(fader);
         });
     </script>
+    <!-- ===== मैग्नेटिक बटन इफेक्ट ===== -->
+<script>
+document.addEventListener('mousemove', function(e) {
+    const magnets = document.querySelectorAll('.btn, .download-link, .note-card');
+    magnets.forEach(magnet => {
+        const magnetRect = magnet.getBoundingClientRect();
+        const magnetX = magnetRect.left + magnetRect.width / 2;
+        const magnetY = magnetRect.top + magnetRect.height / 2;
+        
+        const distanceX = e.clientX - magnetX;
+        const distanceY = e.clientY - magnetY;
+        const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+        
+        if (distance < 200) {
+            const strength = 0.5;
+            const moveX = distanceX * strength * (1 - distance / 200);
+            const moveY = distanceY * strength * (1 - distance / 200);
+            magnet.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        } else {
+            magnet.style.transform = '';
+        }
+    });
+});
+
+// पार्टिकल जेनरेटर
+function createParticles() {
+    const particles = document.createElement('div');
+    particles.className = 'particle';
+    particles.style.position = 'fixed';
+    particles.style.top = '0';
+    particles.style.left = '0';
+    particles.style.width = '100%';
+    particles.style.height = '100%';
+    particles.style.pointerEvents = 'none';
+    particles.style.zIndex = '-1';
+    
+    for (let i = 0; i < 50; i++) {
+        const span = document.createElement('span');
+        span.style.left = Math.random() * 100 + '%';
+        span.style.animationDelay = Math.random() * 10 + 's';
+        span.style.animationDuration = 10 + Math.random() * 20 + 's';
+        span.style.background = `rgba(${Math.random()*255}, ${Math.random()*255}, ${Math.random()*255}, 0.3)`;
+        particles.appendChild(span);
+    }
+    document.body.appendChild(particles);
+}
+
+createParticles();
+</script>
 </body>
 </html>
 ```
